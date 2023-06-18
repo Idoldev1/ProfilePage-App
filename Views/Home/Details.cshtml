@@ -1,0 +1,36 @@
+@model HomeDetailsView
+ 
+@{
+    ViewBag.Title = "Profile Details";
+    var photoPath = "~/images/" + (Model.ProfileDetails.PhotoPath ?? "myimage.jpeg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.ProfileDetails.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+
+                <h4>User ID : @Model.ProfileDetails.Id</h4>
+                <h4>User Email : @Model.ProfileDetails.Email</h4>
+                <h4>User Department : @Model.ProfileDetails.Department</h4>
+                <h4>User Skills : @Model.ProfileDetails.Skills</h4>
+                <h4>User Experience : @Model.ProfileDetails.Experience</h4>
+                <h4>User Projects : @Model.ProfileDetails.Projects</h4>
+            </div>
+            <div class="card-body text-center">
+                <a asp-action="index" class="btn btn-primary">Back</a>
+                <a asp-action="edit" asp-controller="home" asp-route-id="@Model.ProfileDetails.Id" class="btn btn-primary">Update</a>
+                <a asp-action="Delete" asp-controller="home" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <scrips src="~/js/site.js"></scrips>
+}
